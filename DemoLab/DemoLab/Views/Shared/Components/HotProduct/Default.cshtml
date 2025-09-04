@@ -1,0 +1,14 @@
+﻿@model List<DemoLab.Models.Product>
+
+<div>
+    <h3>Sản phẩm Hot</h3>
+    <div style="display:flex;flex-wrap:wrap;">
+        @foreach (var p in Model)
+        {
+            <div class="product-card">
+                <img src="~/images/@p.Image" alt="@p.Name" />
+                <p>@p.Name</p>
+            </div>
+        }
+    </div>
+</div>

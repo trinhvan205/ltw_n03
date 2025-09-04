@@ -1,0 +1,17 @@
+﻿@model List<DemoLab.Models.Product>
+
+<div>
+    <h3>Sản phẩm mới nhất</h3>
+    <div style="display:flex;flex-wrap:wrap;">
+        @foreach (var p in Model)
+        {
+            <div style="width:30%;margin:10px;padding:10px;border:1px solid #ccc;text-align:center;">
+                <img src="~/images/@p.Image" alt="@p.Name" style="max-width:100px;" />
+                <p>@p.Name</p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Gọi View Component HotProduct -->
+@await Component.InvokeAsync("HotProduct")

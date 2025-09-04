@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - DemoLab</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header style="background:black;color:white;padding:10px;">
+        <h2>DEMO LAB</h2>
+        <nav>
+            <a asp-controller="Home" asp-action="Index" style="color:white;margin-right:15px;">Trang chủ</a>
+            <a href="#" style="color:white;margin-right:15px;">Giới thiệu</a>
+            <a href="#" style="color:white;margin-right:15px;">Liên hệ</a>
+        </nav>
+    </header>
+
+    <main style="display:flex; margin:20px;">
+        <!-- Sidebar -->
+        <aside style="width:25%; padding:10px; border:1px solid #ccc;">
+            @await Html.PartialAsync("_CategoryPartial")
+        </aside>
+
+        <!-- Main Content -->
+        <section style="width:75%; padding:10px;">
+            @RenderBody()
+        </section>
+    </main>
+
+    <footer style="background:#333;color:white;padding:10px;margin-top:20px;">
+        <p>GIỚI THIỆU</p>
+        <p>LIÊN HỆ</p>
+    </footer>
+</body>
+</html>
