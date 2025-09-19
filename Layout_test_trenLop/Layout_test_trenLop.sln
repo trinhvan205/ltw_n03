@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layout_test_trenLop", "Layout_test_trenLop\Layout_test_trenLop.csproj", "{9CA648B7-AA9E-4D94-B0D5-BC85D5C50D5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CA648B7-AA9E-4D94-B0D5-BC85D5C50D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA648B7-AA9E-4D94-B0D5-BC85D5C50D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA648B7-AA9E-4D94-B0D5-BC85D5C50D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA648B7-AA9E-4D94-B0D5-BC85D5C50D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8C3968C-17CE-46DE-8F7B-6342188A7F83}
+	EndGlobalSection
+EndGlobal
