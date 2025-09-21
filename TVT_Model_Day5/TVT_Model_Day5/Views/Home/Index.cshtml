@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TVT_Model_Day5.Models.Employee>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h3>Employee Details</h3>
+
+    @{
+        var employee = ViewBag.employees;
+    }
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in employee)
+            {
+                <tr>
+                    <td>@p.id</td>
+                    <td>@p.fullName</td>
+                    <td>@p.gender</td>
+                    <td>@p.email</td>
+                    <td>@p.phone</td>
+                    <td>@String.Format("{0:N0} VND", p.salary)</td>
+                    <td>@p.status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
