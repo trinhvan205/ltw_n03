@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpApp", "EmpApp\EmpApp.csproj", "{1FBC4D05-438B-407A-8EFF-2335016BF8B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FBC4D05-438B-407A-8EFF-2335016BF8B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBC4D05-438B-407A-8EFF-2335016BF8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBC4D05-438B-407A-8EFF-2335016BF8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBC4D05-438B-407A-8EFF-2335016BF8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F5987BC-7B28-4638-8D29-27BEF02AD4B5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,39 @@
+﻿@Model list<EmpApp.Models.employee>
+@{
+    ViewBag.Title = "empList";
+}
+
+<h2>empList</h2>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>Status</th>
+            <th style="width:180px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.FullName</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Phone</td>
+                <td>@emp.Email</td>
+                <td>@emp.Salary.ToString("C")</td>
+                <td>@emp.Status</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@emp.Id">Edit</a>
+                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@emp.Id">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
