@@ -1,0 +1,43 @@
+﻿@model TvtDay10LabCf.Models.TvtLoai_San_Pham
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TvtLoai_San_Pham</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="tvtCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="tvtMaLoai" class="control-label"></label>
+                <input asp-for="tvtMaLoai" class="form-control" />
+                <span asp-validation-for="tvtMaLoai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tvtTenLoai" class="control-label"></label>
+                <input asp-for="tvtTenLoai" class="form-control" />
+                <span asp-validation-for="tvtTenLoai" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="tvtTrangThai" /> @Html.DisplayNameFor(model => model.tvtTrangThai)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ghi lại" class="btn btn-primary me-2" />
+                <a asp-action="tvtIndex" class="btn btn-secondary">Back to list</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

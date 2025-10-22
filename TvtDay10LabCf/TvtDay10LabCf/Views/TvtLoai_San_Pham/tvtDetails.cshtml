@@ -1,0 +1,36 @@
+﻿@model TvtDay10LabCf.Models.TvtLoai_San_Pham
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TvtLoai_San_Pham</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtMaLoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtMaLoai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtTenLoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtTenLoai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtTrangThai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtTrangThai)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="tvtEdit" asp-route-id="@Model?.tvtId">Edit</a> |
+    <a asp-action="tvtIndex">Back to List</a>
+</div>

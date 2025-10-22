@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TvtDay10LabCf.Models.TvtLoai_San_Pham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="tvtCreate" class="btn btn-primary">Tạo mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtMaLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtTenLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtTrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtMaLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtTenLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtTrangThai)
+            </td>
+            <td>
+                <a asp-action="tvtEdit" asp-route-id="@item.tvtId">Edit</a> |
+                <a asp-action="tvtDetails" asp-route-id="@item.tvtId">Details</a> |
+                <a asp-action="tvtDelete" asp-route-id="@item.tvtId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
