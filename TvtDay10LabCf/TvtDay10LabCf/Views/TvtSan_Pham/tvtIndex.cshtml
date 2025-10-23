@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TvtDay10LabCf.Models.TvtSan_Pham>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2 class="mb-3">Danh sách sản phẩm</h2>
+
+<p>
+    <a asp-action="tvtCreate" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Thêm sản phẩm mới
+    </a>
+</p>
+
+<table class="table table-bordered table-striped table-hover align-middle">
+    <thead class="table-dark text-center">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.tvtMaSanPham)</th>
+            <th>Loại sản phẩm</th>
+            <th>@Html.DisplayNameFor(model => model.tvtTenSanPham)</th>
+            <th>@Html.DisplayNameFor(model => model.tvtHinhAnh)</th>
+            <th>@Html.DisplayNameFor(model => model.tvtSoLuong)</th>
+            <th>@Html.DisplayNameFor(model => model.tvtDonGia)</th>
+            <th>@Html.DisplayNameFor(model => model.tvtTrangThai)</th>
+            <th class="text-center">Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.tvtMaSanPham)</td>
+
+                <td>
+                    @(item.TvtLoai_San_Pham != null
+                                    ? item.TvtLoai_San_Pham.tvtTenLoai
+                                    : "—")
+            </td>
+
+                <td>@Html.DisplayFor(modelItem => item.tvtTenSanPham)</td>
+
+                <td>
+                @if (!string.IsNullOrEmpty(item.tvtHinhAnh))
+                    {
+                        <img src="@item.tvtHinhAnh" alt="Ảnh sản phẩm" width="80" class="rounded" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">Chưa có ảnh</span>
+                    }
+                </td>
+
+                <td class="text-center">@item.tvtSoLuong</td>
+
+                <td class="text-end">@String.Format("{0:N0} ₫", item.tvtDonGia)</td>
+
+                <td class="text-center">
+                    @(item.tvtTrangThai ? "Đang bán" : "Ngừng bán")
+                </td>
+
+                <td class="text-center">
+                    <a asp-action="tvtEdit" asp-route-tvtId="@item.tvtId" class="btn btn-sm btn-warning me-1">Sửa</a>
+                    <a asp-action="tvtDetails" asp-route-tvtId="@item.tvtId" class="btn btn-sm btn-info me-1">Chi tiết</a>
+                    <a asp-action="tvtDelete" asp-route-tvtId="@item.tvtId" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

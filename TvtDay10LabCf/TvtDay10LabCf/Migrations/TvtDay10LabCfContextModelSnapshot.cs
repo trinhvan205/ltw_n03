@@ -31,11 +31,13 @@ namespace TvtDay10LabCf.Migrations
 
                     b.Property<string>("tvtMaLoai")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("tvtTenLoai")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("tvtTrangThai")
                         .HasColumnType("bit");
@@ -53,9 +55,6 @@ namespace TvtDay10LabCf.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("tvtId"));
 
-                    b.Property<long>("TvtLoai_San_PhamtvtId")
-                        .HasColumnType("bigint");
-
                     b.Property<decimal>("tvtDonGia")
                         .HasColumnType("decimal(18,2)");
 
@@ -63,7 +62,7 @@ namespace TvtDay10LabCf.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("tvtMaLoai")
+                    b.Property<long>("tvtLoaiId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("tvtMaSanPham")
@@ -82,7 +81,7 @@ namespace TvtDay10LabCf.Migrations
 
                     b.HasKey("tvtId");
 
-                    b.HasIndex("TvtLoai_San_PhamtvtId");
+                    b.HasIndex("tvtLoaiId");
 
                     b.ToTable("TvtSan_Pham");
                 });
@@ -91,7 +90,7 @@ namespace TvtDay10LabCf.Migrations
                 {
                     b.HasOne("TvtDay10LabCf.Models.TvtLoai_San_Pham", "TvtLoai_San_Pham")
                         .WithMany("TvtSan_Phams")
-                        .HasForeignKey("TvtLoai_San_PhamtvtId")
+                        .HasForeignKey("tvtLoaiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

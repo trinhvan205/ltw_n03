@@ -1,0 +1,58 @@
+﻿@model TvtDay10LabCf.Models.TvtSan_Pham
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<h2 class="mb-3">Chi tiết sản phẩm</h2>
+<hr />
+
+<div class="card shadow-sm p-4 mb-3" style="max-width: 800px;">
+    <div class="row g-0">
+        <div class="col-md-4 text-center">
+            @if (!string.IsNullOrEmpty(Model.tvtHinhAnh))
+            {
+                <img src="@Model.tvtHinhAnh" alt="Ảnh sản phẩm" class="img-fluid rounded" style="max-height: 220px;" />
+            }
+            else
+            {
+                <div class="text-muted fst-italic">Chưa có hình ảnh</div>
+            }
+        </div>
+
+        <div class="col-md-8">
+            <dl class="row mb-0">
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(m => m.tvtMaSanPham)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(m => m.tvtMaSanPham)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(m => m.tvtTenSanPham)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(m => m.tvtTenSanPham)</dd>
+
+                <dt class="col-sm-4 fw-bold">Loại sản phẩm</dt>
+                <dd class="col-sm-8">
+                    @(Model.TvtLoai_San_Pham != null
+                                        ? Model.TvtLoai_San_Pham.tvtTenLoai
+                                        : "—")
+                </dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(m => m.tvtSoLuong)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(m => m.tvtSoLuong)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(m => m.tvtDonGia)</dt>
+                <dd class="col-sm-8 text-danger fw-bold">
+                    @String.Format("{0:N0} ₫", Model.tvtDonGia)
+                </dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(m => m.tvtTrangThai)</dt>
+                <dd class="col-sm-8">
+                    @(Model.tvtTrangThai ? "Đang bán" : "Ngừng bán")
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="tvtEdit" asp-route-tvtid="@Model?.tvtId" class="btn btn-warning me-2">Chỉnh sửa</a>
+    <a asp-action="tvtIndex" class="btn btn-secondary">Quay lại danh sách</a>
+</div>

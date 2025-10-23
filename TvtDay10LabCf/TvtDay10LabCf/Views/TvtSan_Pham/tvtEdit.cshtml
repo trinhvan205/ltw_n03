@@ -1,0 +1,78 @@
+﻿@model TvtDay10LabCf.Models.TvtSan_Pham
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+}
+
+<h2>Chỉnh sửa sản phẩm</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="tvtEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="tvtId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtMaSanPham" class="form-label"></label>
+                <input asp-for="tvtMaSanPham" class="form-control" />
+                <span asp-validation-for="tvtMaSanPham" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtTenSanPham" class="form-label"></label>
+                <input asp-for="tvtTenSanPham" class="form-control" />
+                <span asp-validation-for="tvtTenSanPham" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtHinhAnh" class="form-label"></label>
+                <input asp-for="tvtHinhAnh" class="form-control" placeholder="Nhập URL hình ảnh hoặc đường dẫn tệp" />
+                <span asp-validation-for="tvtHinhAnh" class="text-danger"></span>
+
+                @if (!string.IsNullOrEmpty(Model.tvtHinhAnh))
+                {
+                    <div class="mt-2">
+                        <img src="@Model.tvtHinhAnh" alt="Ảnh sản phẩm" width="120" class="rounded shadow-sm" />
+                    </div>
+                }
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtSoLuong" class="form-label"></label>
+                <input asp-for="tvtSoLuong" class="form-control" type="number" min="0" />
+                <span asp-validation-for="tvtSoLuong" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtDonGia" class="form-label"></label>
+                <input asp-for="tvtDonGia" class="form-control" type="number" step="1000" min="0" />
+                <span asp-validation-for="tvtDonGia" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="tvtLoaiId" class="form-label"></label>
+                <select asp-for="tvtLoaiId" class="form-select" asp-items="ViewBag.tvtLoaiId">
+                    <option value="">-- Chọn loại sản phẩm --</option>
+                </select>
+                <span asp-validation-for="tvtLoaiId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <input class="form-check-input" asp-for="tvtTrangThai" />
+                <label class="form-check-label" asp-for="tvtTrangThai"></label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success me-2">Lưu thay đổi</button>
+                <a asp-action="tvtIndex" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

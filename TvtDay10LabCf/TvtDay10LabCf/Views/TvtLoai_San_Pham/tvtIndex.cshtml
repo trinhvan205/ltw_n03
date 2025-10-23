@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.tvtTrangThai)
             </td>
             <td>
-                <a asp-action="tvtEdit" asp-route-id="@item.tvtId">Edit</a> |
-                <a asp-action="tvtDetails" asp-route-id="@item.tvtId">Details</a> |
-                <a asp-action="tvtDelete" asp-route-id="@item.tvtId">Delete</a>
+                <a asp-action="tvtEdit" asp-route-tvtId="@item.tvtId">Edit</a> |
+                    <a asp-action="tvtDetails" asp-route-tvtId="@item.tvtId">Details</a> |
+                    <a asp-action="tvtDelete" asp-route-tvtId="@item.tvtId">Delete</a>
             </td>
         </tr>
 }
