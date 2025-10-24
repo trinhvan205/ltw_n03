@@ -1,0 +1,42 @@
+﻿@model Tvt_231230930_de01.Models.TvtComputer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TvtComputer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtComName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtComName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtComprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtComprice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtComImage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtComImage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tvtComStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tvtComStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="TvtEdit" asp-route-id="@Model?.tvtComId">Sửa</a> |
+    <a asp-action="TvtIndex">Xem Danh Sách</a>
+</div>

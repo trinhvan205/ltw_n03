@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Tvt_231230930_de01.Models.TvtComputer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="TvtCreate">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtComName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtComprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtComImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tvtComStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtComName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtComprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tvtComImage)
+            </td>
+            <td>
+               @if(item.tvtComStatus)
+               {
+                   <span>Còn hàng</span>
+               }
+               else
+               {
+                   <span>Hết hàng</span>
+               }
+            </td>
+
+            <td>
+                <a asp-action="TvtEdit" asp-route-id="@item.tvtComId">Sửa</a> |
+                <a asp-action="TvtDetails" asp-route-id="@item.tvtComId">Xem</a> |
+                <a asp-action="TvtDelete" asp-route-id="@item.tvtComId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
