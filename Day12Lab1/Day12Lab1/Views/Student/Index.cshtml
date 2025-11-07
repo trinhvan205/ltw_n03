@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Student>
+
+<a asp-controller = "Student" asp-action="Create" class="btn btn-primary">Create Student</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Ngành</th>
+            <th>Giới tính</th>
+            <th>Loại SV</th>
+            <th>Địa chỉ</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.DateOfBirth.ToString("dd/MM/yyyy")</td>
+
+                @* Xử lý ngành *@
+                <td>
+                    @{
+                        string str = s.Branch switch
+                        {
+                            Branch.IT => "CNTT",
+                            Branch.BE => "Kinh tế",
+                            Branch.CE => "Công trình",
+                            Branch.EE => "Điện - Điện tử",
+                            _ => "Khác"
+                        };
+                    }
+                    @str
+                </td>
+
+                <td>@(s.Gender == Gender.Male ? "Nam" : "Nữ")</td>
+                <td>@(s.IsRegular ? "Chính quy" : "Phi chính quy")</td>
+                <td>@s.Address</td>
+                <td>@s.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

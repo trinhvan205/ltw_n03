@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Annotation_Test_TrenLop.Models.User;
+@{
+}
+
+<h1>UserManualValid</h1>
+
+<form asp-action = "UserManualValid" asp-controller="User" method="post">
+    <div>
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+        <span class="text-danger">@ViewBag.Pass</span>
+
+    </div>
+    <input type="submit" value="check"/>
+</form>
