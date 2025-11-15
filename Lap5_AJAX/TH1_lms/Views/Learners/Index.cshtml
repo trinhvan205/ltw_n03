@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TH1_lms.Models.Learner>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "MyLayout";
+}
+
+<h1>Index</h1>
+
+<h1>Danh sách Learners</h1>
+<!-- Gọi ViewComponent Major -->
+@await Component.InvokeAsync("Major")
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div id="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstMidName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EnrollmentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Major)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstMidName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Major.MajorName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.LearnerID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.LearnerID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.LearnerID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+        $(".major-item").click(function () { // lấy được .major-item vì đã gọi view component RenderMajor ở trên
+            var id = $(this).attr("data-id");  //attr lấy giá trị của data-id (data-id từ RenderMajor), //this là thẻ li mà mình click vào
+
+            $.ajax({
+                url: "/Learners/LearnerByMajorID",
+                data: { mid: id },
+                success: function (response) { //respone chính là LearnerTable vì LearnerByMajorID return về LearnerTable
+                    $("#content").html(response); //thay thể toàn bộ thẻ <div id = "content"> bằng LearnerTable
+                }
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "MyLayoutHelper";
+}
+@model IEnumerable<TH1_lms.Models.Student>
+
+@* <a  asp-action="Create" class="btn btn-primary">Create new Student</a> *@
+@* sử dụng cách này vì đã sửa route của create và index *@
+<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create new Student</a> 
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>mã</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Ngành</th>
+            <th>Giới tính</th>
+            <th>Hệ ĐT</th>
+            <th>Đại chỉ</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.DateOfBirth</td>
+                @{
+                    string str = "";
+                    switch(s.Branch)
+                    {
+                        case Branch.IT:
+                            str = "CNTT";
+                            break;
+                        case Branch.BE:
+                            str = "Kinh tế";
+                            break;
+                        case Branch.CE:
+                            str = "Công trình";
+                            break;
+                        case Branch.EE:
+                            str = "Điện - Điện tử";
+                            break;
+
+
+                    }   
+                }
+                <td>@str</td>
+                <td>@(s.Gender == Gender.Male ? "Nam" : "Nữ")</td>
+                <td>@(s.IsRegular ? "Chính quy" : "Phi chính quy")</td>
+                <td>@s.Address</td>
+                <td>@s.Email</td>
+
+            </tr>
+        }
+    </tbody>
+</table>

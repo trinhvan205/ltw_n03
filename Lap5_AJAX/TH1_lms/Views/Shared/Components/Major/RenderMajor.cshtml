@@ -1,0 +1,10 @@
+﻿@model IEnumerable<TH1_lms.Models.Major>
+
+<ul class="nav">
+    @foreach (var m in Model)
+    {
+        <li class="nav-item major-item" data-id="@m.MajorID">
+            <a class="nav-link">@m.MajorName</a>
+        </li>
+    }
+</ul>
