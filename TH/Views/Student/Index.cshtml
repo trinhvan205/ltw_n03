@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"]= "Student List";
+    Layout = "~/Views/Shared/Mylayout.cshtml";
+}
+@model IEnumerable<Student>
+<a href="/Admin/Student/Add" class="btn btn-primary">Create Student</a>
+<h2>Danh sách sinh viên</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Mã</th>
+            <th>Họ Tên</th>
+            <th>Điểm</th>
+            <th>Ngày sinh</th>
+            <th>Ngành</th>
+            <th>Giới tính</th>
+            <th>Hệ DT</th>
+            <th>Địa chỉ</th>
+            <th>Email</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td style="width:140px;">
+                    <img id="img-@s.Id" src="@(string.IsNullOrEmpty(s.PhotoPath) ? "" : s.PhotoPath)" alt="photo" style="max-width:120px; max-height:90px; @(string.IsNullOrEmpty(s.PhotoPath) ? "display:none;" : "")" />
+                </td>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Score</td>
+                <td>@s.DateOfBirth</td>
+                @{
+                    string str = "";
+                    switch (s.Branch)
+                    {
+                        case Branch.IT:
+                            str = "CNTT";
+                            break;
+                        case Branch.BE:
+                            str = "Kinh tế";
+                            break;
+                        case Branch.CE:
+                            str = "Công trình";
+                            break;
+                        case Branch.EE:
+                            str = "Điện - Điện tử";
+                            break;                  
+                    }
+                }
+                <td>@str</td>
+                <td>@(s.Gender==Gender.Male? "Nam":"Nữ")</td>
+                <td>@(s.IsRegular ? "Chính quy":"Phi chính quy")</td>
+                <td>@s.Address</td>
+                <td>@s.Email</td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        var table = document.querySelector("table");
+        table.onclick = function onTableClick(){
+            table.style = "background-color: yellow;"
+        }
+         function previewFile(input, id) {
+            var file = input.files && input.files[0];
+            var img = document.getElementById('img-' + id);
+            if (!file) {
+                // clear preview if no file chosen
+                if (img) { img.src = ''; img.style.display = 'none'; }
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                if (img) {
+                    img.src = e.target.result;
+                    img.style.display = '';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+}

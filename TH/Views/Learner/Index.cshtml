@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Student List";
+    Layout = "~/Views/Shared/Mylayout.cshtml";
+}
+@model IEnumerable<Learner>
+
+<div class="ms-2 mx-2">
+    <h1>Learner List</h1>
+    @await Component.InvokeAsync("Major")
+    <form class="d-none d-md-inline-block form-inline ms-auto me-md-3 my-2 my-md-0">
+        <div class="input-group"> 
+            <input id="keyword" class="form-control" name="keyword"
+                     type="text" placeholder="Search learner" />
+            <button id="btnSearch" class="btn btn-primary" type="button">
+                <i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <div id="content">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mã (ID)</th>
+                    <th>Tên (First/Middle Name)</th>
+                    <th>Họ (Last Name)</th>
+                    <th>Ngành (Major)</th>
+                    <th>Ngày Nhập Học (Enrollment Date)</th>
+                    <th>Chức năng (Functions/Actions)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.LearnerID</td>
+                        <td>@s.FirstMidName</td>
+                        <td>@s.LastName</td>
+                        <td>@s.Major.MajorName</td>
+                        <td>@s.EnrollmentDate</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@s.LearnerID">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@s.LearnerID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <ul class="pagination">
+            @for (int i=1;i<= ViewBag.pageNum; i++)
+            {
+                <li class="page-item" page ="@i"
+                    @(ViewBag.mid != null ? "mid='ViewBag.mid'":"" )
+                    @(ViewBag.keyword != null ? "keyword='ViewBag.keyword'":"")>
+                    <a class="page-link" >@i</a>
+                </li>
+             }
+        </ul>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+</div>
+@section Scripts {
+    <script>
+        $("li").click(function (e) {
+            var id = $(this).attr("id");
+            //alert(id);
+            $.ajax({
+                url: "LearnerByMajorID",
+                data: { mid: id },
+                success: function (response) {
+                    $("div#content").html(response);
+                }
+            });
+        });
+        $('body').on('click', 'li.page-item', function(e){
+            var page = $(this).attr("page");
+            var mid = $(this).attr("mid");
+            var keyword = $(this).attr("keyword");
+            var data = {mid: mid, keyword: keyword, pageIndex: page};
+            $.ajax({
+                url: "LearnerFilter",
+                data: data,
+                success: function (response) {
+                    $("div#content").html(response);
+                }
+            });
+        });
+        $(".nav li").click(function (e) {
+            var id = $(this).attr("id");
+            var data - {mid: id};
+            //alert(id);
+            $.ajax({
+                url: "LearnerFilter",
+                data: data,
+                success: function (response) {
+                    $("div#content").html(response);
+                }
+            });
+        });
+        $("button#btnSearch").click(function (e) {
+            var keyword = $("#keyword").val();
+            var data = { keyword: keyword };
+            //alert(id);
+            $.ajax({
+                url: "LearnerFilter",
+                data: data,
+                success: function (response) {
+                    $("div#content").html(response);
+                }
+            });
+        });
+    </script>
+}

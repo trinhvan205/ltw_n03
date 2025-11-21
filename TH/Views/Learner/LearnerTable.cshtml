@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Learner>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã (ID)</th>
+                <th>Tên (First/Middle Name)</th>
+                <th>Họ (Last Name)</th>
+                <th>Ngành (Major)</th>
+                <th>Ngày Nhập Học (Enrollment Date)</th>
+                <th>Chức năng (Functions/Actions)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.LearnerID</td>
+                    <td>@s.FirstMidName</td>
+                    <td>@s.LastName</td>
+                    <td>@s.Major.MajorName</td>
+                    <td>@s.EnrollmentDate</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@s.LearnerID">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@s.LearnerID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
